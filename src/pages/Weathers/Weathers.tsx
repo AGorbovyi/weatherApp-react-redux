@@ -8,7 +8,7 @@ import {
   LabelName,
   CardsPosition,
 } from "./styles"
-
+import { weatherAppActions, weatherAppSelectors } from "store/redux/WeatherAppSlice";
 import { useAppSelector, useAppDispatch } from "store/hooks"
 // import {
 //   employeeSliceSelectors,
@@ -17,17 +17,13 @@ import { useAppSelector, useAppDispatch } from "store/hooks"
 // import { Employee } from "store/redux/employeeApp/types"
 import Button from "components/Button/Button"
 
-import {
-  weatherAppSelectors,
-  weatherAppActions
-} from "store/redux/WeatherAppSlice";
+
 import { WeatherEntry } from "./types";
 
 
 
 function Weathers() {
   const dispatch = useAppDispatch();
-  const weatherData: WeatherEntry[] = useAppSelector(weatherAppSelectors.getWeatherEntries); // Verwende den richtigen Typ
 
   // const dispatch = useAppDispatch()
   // const weatherData = useAppSelector(weatherAppSelectors.getWeatherEntries);
@@ -71,7 +67,7 @@ function Weathers() {
   return (
     <PageWrapper> 
       <CardsPosition>CardPosition
-        {weatherData.map((entry) => (
+        {(useAppSelector(weatherAppSelectors.getWeatherEntries)).map((entry) => (
         <div key={entry.id}>
           <p>{entry.city}: {entry.temperature}°C</p>
           <Button name="Remove" onClick={() => removeWeather(entry.id)} />

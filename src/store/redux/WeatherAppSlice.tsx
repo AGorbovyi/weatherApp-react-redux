@@ -1,83 +1,62 @@
-/*import { createAppSlice } from "store/createAppSlice"
-// import { EmployeeSliceInitialState } from "./types"
-import { v4 } from "uuid"
-import { PayloadAction } from "@reduxjs/toolkit"
-import { WeatherSliceInitialState } from "./types";
-// import { EmployeeFormValues } from "pages/EmployeeApp/components/EmployeeForm/types"
-
-const weatherInitialState: WeatherSliceInitialState = {
-    data: [],
-  };
-
- export const weatherAppSlice = createAppSlice(
-   {
-   name: "WEATHER",
-   initialState: weatherInitialState,
-   reducers: //(create) => (
-   {
-    addWeatherEntry: // create.reducer(
-        addWeatherEntry: (state, action: PayloadAction<{ city: string; temperature: number }>) => {
-            state.data.push({ ...action.payload, id: uuidv4() });
-   //  (state, action: PayloadAction<{ city: string; temperature: number }>) => {
-  //  state.data.push({ ...action.payload, id: uuidv4() });
-}
-    ),
-    removeWeatherEntry: create.reducer(
-        (state, action: PayloadAction<{ id: string }>) => {
-          state.data = state.data.filter(
-            (entry) => entry.id !== action.payload.id
-          );
-        }
-      ),
-    }),
-    selectors: {
-      getWeatherEntries: (state) => state.data,
-    },
-  });
-
-
-
-  export const weatherAppActions = weatherAppSlice.actions;
-  export const weatherAppSelectors = weatherAppSlice.selectors;
-  */
-
-  import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
+import { createAppSlice } from "store/createAppSlice";
+import { v4 } from "uuid";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { WeatherSliceInitialState } from "./types";
 
-
-
-
-const weatherInitialState: WeatherSliceInitialState = {
+export const weatherInitialState: WeatherSliceInitialState = {
   data: [],
+  error: undefined,
+  isFetching: false,
 };
 
-export const weatherAppSlice = createSlice({
+export const weatherSlice = createAppSlice({
   name: "WEATHER",
-
   initialState: weatherInitialState,
-  reducers: {
+  reducers: (create) => ({
+    getWeather: create.asyncThunk(
+      async (cityName: string, { rejectWithValue }) => {
+        const APP_ID = 'https://api.openweathermap.org/data/2.5/weather?q=berlin&appid=9ebdcf15d86c960f135c3ffd7e10de48'; 
+        const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APP_ID}`;
 
-    addWeatherEntry: (state, action: PayloadAction<{ city: string; temperature: number }>) => {
-      state.data.push(
-        { ...action.payload, id: uuidv4() }
-    );
+        const response = await fetch(WEATHER_API_URL);
+
+        const result = await response.json();
+
+        if (response.ok) {
+          return result;
+        } else {
+          return rejectWithValue(result.message || "Error001"); 
+        }
+      },
+      {
+        fulfilled: (state: WeatherSliceInitialState, action) => {
+          state.data.push({
+            id: v4(),
+            name: action.payload.name,
+            city: action.payload.name,
+            temperature: action.payload.main.temp,
+            image: action.payload.weather[0].icon,
+          });
+          state.isFetching = false;
+        },
+        rejected: (state: WeatherSliceInitialState, action: PayloadAction<string | undefined>) => {
+          state.error = action.payload || "unknown error";
+          state.isFetching = false;
+        },
+      },
+    ),
+    deleteWeatherCard: (state: WeatherSliceInitialState, action: PayloadAction<{ id: string }>) => {
+      state.data = state.data.filter((weatherCard) => weatherCard.id !== action.payload.id);
     },
+    deleteAllWeatherCards: () => weatherInitialState,
+  }),
 
-    removeWeatherEntry:
-     (state, action: PayloadAction<{ id: string }>) => {
-      state.data = state.data.filter(
-
-
-        (entry) => entry.id !== action.payload.id
-      );
+  selectors: {
+    weather: (state: WeatherSliceInitialState) => {
+      return state.data;
     },
   },
-
-
 });
 
-export const weatherAppActions = weatherAppSlice.actions;
-export const weatherAppSelectors = {
-  getWeatherEntries: (state: WeatherSliceInitialState) => state.data,
-};
+export const weatherSliceAction = weatherSlice.actions;
+export const weatherSliceSelectors = weatherSlice.selectors;

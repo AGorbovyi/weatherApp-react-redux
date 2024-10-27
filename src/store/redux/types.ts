@@ -1,13 +1,13 @@
-export interface WeatherEntry {
-  id: string;
-  city: string;
-  temperature: number;
+export interface Weather {
+  id: string
+  name: string
+  city: string
+  temperature: string
+  image: string
 }
 
 export interface WeatherSliceInitialState {
-  data: WeatherEntry[];
+  data: Weather[]
+  error: undefined | string
+  isFetching: boolean
 }
-
-export const weatherInitialState: WeatherSliceInitialState = {
-  data: [],
-};
