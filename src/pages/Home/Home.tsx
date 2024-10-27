@@ -82,7 +82,14 @@ function HomePage() {
   return(
   <PageWrapper>
     <SearchForm>
-      <InputContainer>Input</InputContainer>
+      <InputContainer><Input
+    id="search-input"
+    name="city"
+    placeholder="Enter city"
+    onChange={formik.handleChange}
+    value={formik.values.city}
+    error={formik.errors.city}
+  /></InputContainer>
       <SearchButtonContainer>
         <Button type="submit" name="Search" />
       </SearchButtonContainer>
