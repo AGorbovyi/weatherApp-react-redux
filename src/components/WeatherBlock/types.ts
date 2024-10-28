@@ -1,13 +1,6 @@
-import { MouseEvent } from "react"
-
-export type ButtonTypes = "submit" | "reset" | "button" | undefined
-
-export interface ButtonProps {
-  type?: ButtonTypes
+export interface WeatherBlockProps {
   name: string
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
-  isDeleteVariant?: boolean
-  disabled?: boolean
+  onClick?: () => void
   isSearchButton?: boolean
   isStandardButton?: boolean
 }
