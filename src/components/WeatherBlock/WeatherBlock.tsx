@@ -19,8 +19,8 @@ function WeatherBlock({
   isSearchButton = false,
   isStandardButton = false,
 }: WeatherBlockProps) {
-  return
-  ;<WeatherBar>
+  return (
+    <WeatherBar>
     <MainBarBlock>
       <WeatherContainer>
         <WeatherCondition>
@@ -41,6 +41,7 @@ function WeatherBlock({
       </StandardButton>
     </ButtonContainer>
   </WeatherBar>
+  )
 }
 
 export default WeatherBlock

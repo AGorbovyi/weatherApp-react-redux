@@ -2,7 +2,6 @@ import { InputProps } from "./types";
 import {
   InputWrapper,
   InputComponent,
-  ErrorContainer,
 } from "./styles";
 
 function Input({
@@ -11,7 +10,6 @@ function Input({
   type = "text",
   placeholder,
   disabled = false,
-  error = undefined,
   value,
   onChange,
 }: InputProps) {
@@ -23,11 +21,9 @@ function Input({
         type={type}
         placeholder={placeholder}
         disabled={disabled}
-        $error={error}
         value={value}
         onChange={onChange}
       />
-      <ErrorContainer>{error}</ErrorContainer>
     </InputWrapper>
   );
 }
