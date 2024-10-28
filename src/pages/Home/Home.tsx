@@ -8,19 +8,24 @@ import { APP_ROUTES } from "constants/routes"
 import { useAppDispatch } from "store/hooks"
 // import { employeeSliceActions } from "store/redux/AppSlice"
 
+import { WeatherIconRain } from "assets"
 import {
   PageWrapper,
   SearchForm,
   InputContainer,
   SearchButtonContainer,
   WeatherBar,
+  MainBarBlock,
   WeatherContainer,
   WeatherCondition,
   Temperature,
   City,
   Icons,
+  IconImg,
   ButtonContainer,
   StandardButton,
+  Error,
+  ErrorDetails,
 } from "./styles"
 // import { EMPLOYEE_FORM_NAMES } from "./types"
 
@@ -58,19 +63,35 @@ function HomePage() {
         </SearchButtonContainer>
       </SearchForm>
       <WeatherBar>
-        <WeatherContainer>
-          <WeatherCondition>
-            <Temperature>18.0</Temperature>
-            <City>Colrado</City>
-          </WeatherCondition>
-          <Icons>Icons</Icons>
-        </WeatherContainer>
+        <MainBarBlock>
+          <WeatherContainer>
+            <WeatherCondition>
+              <Temperature>18.0</Temperature>
+              <City>Colrado</City>
+            </WeatherCondition>
+            <Icons>
+              <IconImg src={WeatherIconRain} alt=" Weather Icon"></IconImg>
+            </Icons>
+          </WeatherContainer>
+          <ButtonContainer>
+            <StandardButton>
+              <Button name="Save" isStandardButton />
+            </StandardButton>
+            <StandardButton>
+              <Button name="Delete" isStandardButton />
+            </StandardButton>
+          </ButtonContainer>
+        </MainBarBlock>
+      </WeatherBar>
+
+      <WeatherBar>
+        <MainBarBlock>
+          <Error>API Error</Error>
+          <ErrorDetails>Something went wrong with API data</ErrorDetails>
+        </MainBarBlock>
         <ButtonContainer>
           <StandardButton>
-            <Button name="Save" isStandardButton/>
-          </StandardButton>
-          <StandardButton>
-            <Button name="Delete" isStandardButton/>
+            <Button name="Delete" isStandardButton />
           </StandardButton>
         </ButtonContainer>
       </WeatherBar>

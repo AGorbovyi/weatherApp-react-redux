@@ -28,7 +28,7 @@ export const InputComponent = styled.input<InputComponentStyleProps>`
 
 
   &::placeholder {
-    color: #FFFFFF;
+    color: #f7f7f7;
     font-size: 20px;
   }
 `

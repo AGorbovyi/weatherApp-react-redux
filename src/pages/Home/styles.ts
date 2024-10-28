@@ -47,6 +47,12 @@ export const WeatherBar = styled.div`
   backdrop-filter: blur(8px);
 `
 
+export const MainBarBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 110px;
+`
+
 export const WeatherContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -80,16 +86,43 @@ export const City = styled.div`
   color: #ffffff;
 `
 
-export const Icons = styled.div``
+export const Icons = styled.div`
+  width: 100%;
+  text-align: center;
+`
+
+export const IconImg = styled.img`
+  height: 74px;
+`
 
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   /* padding: 8px; */
   justify-content: space-evenly;
+  align-items: center;
 `
 
 export const StandardButton = styled.div`
   height: 48px;
   width: 146px;
+`
+
+export const Error = styled.div`
+  height: 70px;
+  font-family: "Inter";
+  font-size: 57px;
+  font-weight: 500;
+  text-align: center;
+  color: #f35e5e;
+`
+
+export const ErrorDetails = styled.div`
+  width: 100%;
+  height: 22px;
+  font-family: "Inter";
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
 `

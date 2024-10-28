@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom"
 
 import AppLayout from "pages/AppLayout/AppLayout"
 import Home from "pages/Home/Home"
-import Weathers from "pages/Weathers/Weathers"
+import Weathers from "pages/Weathers/Weather"
 
 import { APP_ROUTES } from "constants/routes"
 

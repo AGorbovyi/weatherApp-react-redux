@@ -1,18 +1,12 @@
 import styled from "@emotion/styled"
 
-export const PageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 50px;
-`
+import { colors } from "styles/colors"
 
-export const CardsPosition = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 60px;
-`
+interface ButtonComponentStyleProps {
+  $isDeleteVariant: boolean
+  $isSearchButton: boolean
+  $isStandardButton: boolean
+}
 
 export const WeatherBar = styled.div`
   display: flex;
@@ -28,12 +22,6 @@ export const WeatherBar = styled.div`
     rgba(11, 27, 52, 0.62) 96.58%
   );
   backdrop-filter: blur(8px);
-`
-
-export const MainBarBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 110px;
 `
 
 export const WeatherContainer = styled.div`
@@ -76,17 +64,4 @@ export const Icons = styled.div`
 
 export const IconImg = styled.img`
   height: 74px;
-`
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  /* padding: 8px; */
-  justify-content: space-evenly;
-  align-items: center;
-`
-
-export const StandardButton = styled.div`
-  height: 48px;
-  width: 146px;
 `

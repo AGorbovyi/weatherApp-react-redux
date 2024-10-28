@@ -1,23 +1,31 @@
-import {
-  CardWrapper,
-  CardLabel,
-  CardItem,
-  UsersNotFound,
-  PageWrapper,
-  ButtonControl,
-  LabelName,
-  CardsPosition,
-} from "./styles"
-
 import { useAppSelector, useAppDispatch } from "store/hooks"
+
 // import {
 //   employeeSliceSelectors,
 //   employeeSliceActions,
 // } from "store/redux/employeeApp/employeeSlice"
 // import { Employee } from "store/redux/employeeApp/types"
+
 import Button from "components/Button/Button"
 
-function Weathers() {
+import { WeatherIconRain } from "assets"
+import {
+  PageWrapper,
+  CardsPosition,
+  WeatherBar,
+  MainBarBlock,
+  WeatherContainer,
+  WeatherCondition,
+  Temperature,
+  City,
+  Icons,
+  IconImg,
+  ButtonContainer,
+  StandardButton,
+} from "./styles"
+
+
+function Weather() {
   // const dispatch = useAppDispatch()
 
   // const deleteAllEmployees = () => {
@@ -63,11 +71,32 @@ function Weathers() {
         )} */}
       </CardsPosition>
 
+      <WeatherBar>
+        <MainBarBlock>
+          <WeatherContainer>
+            <WeatherCondition>
+              <Temperature>18.0</Temperature>
+              <City>Colrado</City>
+            </WeatherCondition>
+            <Icons>
+              <IconImg src={WeatherIconRain} alt=" Weather Icon"></IconImg>
+            </Icons>
+          </WeatherContainer>
+          <ButtonContainer>
+            <StandardButton>
+              <Button name="Delete" isStandardButton />
+            </StandardButton>
+          </ButtonContainer>
+        </MainBarBlock>
+      </WeatherBar>
+
+
+
       {/* {employeeInitialState.length > 0 && (
         <ButtonControl>
           <Button
             isDeleteVariant
-            name="Remove All Employees"
+            name="RDelete all cards"
             onClick={deleteAllEmployees}
           />
         </ButtonControl>
@@ -76,4 +105,4 @@ function Weathers() {
   )
 }
 
-export default Weathers
+export default Weather
