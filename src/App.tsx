@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom"
 
 import AppLayout from "pages/AppLayout/AppLayout"
 import Home from "pages/Home/Home"
-import Weathers from "pages/Weathers/Weather"
+import Weather from "pages/Weather/Weather"
 
 import { APP_ROUTES } from "constants/routes"
 
@@ -18,8 +18,8 @@ function App() {
             element={<Home />}
           />
           <Route
-            path={APP_ROUTES.WEATHERS}
-            element={<Weathers />}
+            path={APP_ROUTES.WEATHER}
+            element={<Weather />}
           />
           <Route
             path={APP_ROUTES.NOT_FOUND}

@@ -1,6 +1,10 @@
 export interface WeatherBlockProps {
   name: string
-  onClick?: () => void
   isSearchButton?: boolean
   isStandardButton?: boolean
+}
+
+export interface Weather {
+  name: string;
+  country: string;
 }

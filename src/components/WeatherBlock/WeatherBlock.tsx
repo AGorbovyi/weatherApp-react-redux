@@ -15,10 +15,12 @@ import Button from "components/Button/Button"
 
 function WeatherBlock({
   name,
-  onClick,
   isSearchButton = false,
   isStandardButton = false,
 }: WeatherBlockProps) {
+const iconURL: string = "http://openweathermap.org/img/w/${CityWeather?.icon}.png"
+const fToC: string = ((weather.temp - 32) × 5/9).toFixed(0)
+
   return (
     <WeatherBar>
     <MainBarBlock>

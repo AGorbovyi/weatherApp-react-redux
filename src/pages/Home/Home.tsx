@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
+import * as Yup from "yup"
 
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
 
 import { APP_ROUTES } from "constants/routes"
 import { useAppDispatch } from "store/hooks"
-// import { employeeSliceActions } from "store/redux/AppSlice"
-
 import { WeatherIconRain } from "assets"
+import { weatherSliceActions } from "store/redux/weatherAppSlice"
+
 import {
   PageWrapper,
   SearchForm,
@@ -27,35 +28,36 @@ import {
   Error,
   ErrorDetails,
 } from "./styles"
-// import { EMPLOYEE_FORM_NAMES } from "./types"
-
+import { WEATHER_INPUT_FORM_NAMES } from "./types"
 function HomePage() {
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     [EMPLOYEE_FORM_NAMES.NAME]: "",
-  //   },
+  const formik = useFormik({
+    initialValues: {
+      [WEATHER_INPUT_FORM_NAMES.NAME]: "",
+    },
 
-  //   onSubmit: values => {
-  //     dispatch(employeeSliceActions.createEmployee(values))
-  //     navigate(APP_ROUTES.WEATHERS)
-  //   },
-  // })
+    onSubmit: values => {
+      dispatch(
+        weatherSliceActions.getWeather({
+          name: values[WEATHER_INPUT_FORM_NAMES.NAME],
+        }),
+      )
+    },
+  })
 
   return (
     <PageWrapper>
-      <SearchForm>
+      <SearchForm onSubmit={formik.handleSubmit}>
         <InputContainer>
           <Input
             id="search-city"
-            name="search-city"
+            name={WEATHER_INPUT_FORM_NAMES.NAME}
             placeholder="Enter city"
-            // onChange={formik.handleChange}
-            // value={formik.values.name}
-            // error={formik.errors.name}
+            onChange={formik.handleChange}
+            value={formik.values[WEATHER_INPUT_FORM_NAMES.NAME]}
           />
         </InputContainer>
         <SearchButtonContainer>

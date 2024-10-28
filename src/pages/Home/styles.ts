@@ -6,7 +6,7 @@ export const PageWrapper = styled.div`
   gap: 120px;
 `
 
-export const SearchForm = styled.div`
+export const SearchForm = styled.form`
   display: flex;
   flex-direction: row;
   height: 48px;
