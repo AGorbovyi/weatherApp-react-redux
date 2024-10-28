@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 120px;
 `
 
 export const SearchForm = styled.div`
@@ -11,14 +12,13 @@ export const SearchForm = styled.div`
   height: 48px;
   width: 710px;
   gap: 14px;
+  margin-top: 120px;
 `
 
 export const InputContainer = styled.div`
   display: flex;
   height: 48px;
   width: 550px;
-  /* padding: 12px; */
-  /* gap: 10px; */
   font-size: 44px;
   text-align: left;
   border: 1px solid #ffffff;
@@ -34,10 +34,8 @@ export const SearchButtonContainer = styled.div`
 export const WeatherBar = styled.div`
   display: flex;
   flex-direction: column;
-  height: 220px;
   width: 709px;
   padding: 30px;
-  margin-top: 120px;
   border-radius: 20px;
   background: linear-gradient(
     133.66deg,
@@ -45,6 +43,7 @@ export const WeatherBar = styled.div`
     rgba(11, 27, 52, 0.62) 96.58%
   );
   backdrop-filter: blur(8px);
+  gap: 8px;
 `
 
 export const MainBarBlock = styled.div`
@@ -98,7 +97,7 @@ export const IconImg = styled.img`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  /* padding: 8px; */
+  padding: 0px;
   justify-content: space-evenly;
   align-items: center;
 `

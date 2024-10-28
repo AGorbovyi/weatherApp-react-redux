@@ -59,7 +59,7 @@ function HomePage() {
           />
         </InputContainer>
         <SearchButtonContainer>
-          <Button type="submit" name="Search" isSearchButton />
+          <Button type="submit" name="Search" isBlueButton />
         </SearchButtonContainer>
       </SearchForm>
       <WeatherBar>
@@ -73,15 +73,15 @@ function HomePage() {
               <IconImg src={WeatherIconRain} alt=" Weather Icon"></IconImg>
             </Icons>
           </WeatherContainer>
-          <ButtonContainer>
-            <StandardButton>
-              <Button name="Save" isStandardButton />
-            </StandardButton>
-            <StandardButton>
-              <Button name="Delete" isStandardButton />
-            </StandardButton>
-          </ButtonContainer>
         </MainBarBlock>
+        <ButtonContainer>
+          <StandardButton>
+            <Button name="Save" isStandardButton />
+          </StandardButton>
+          <StandardButton>
+            <Button name="Delete" isStandardButton />
+          </StandardButton>
+        </ButtonContainer>
       </WeatherBar>
 
       <WeatherBar>

@@ -68,7 +68,7 @@ export const HeaderLink = styled(NavLink)`
 
 export const Main = styled.main`
   display: flex;
-  padding: 120px;
+  /* padding: 120px; */
   flex: 1;
   justify-content: center;
   color: white;

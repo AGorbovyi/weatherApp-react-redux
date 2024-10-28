@@ -11,7 +11,6 @@ import Button from "components/Button/Button"
 import { WeatherIconRain } from "assets"
 import {
   PageWrapper,
-  CardsPosition,
   WeatherBar,
   MainBarBlock,
   WeatherContainer,
@@ -23,7 +22,6 @@ import {
   ButtonContainer,
   StandardButton,
 } from "./styles"
-
 
 function Weather() {
   // const dispatch = useAppDispatch()
@@ -63,14 +61,6 @@ function Weather() {
   // })
   return (
     <PageWrapper>
-      <CardsPosition>CardPosition
-        {/* {employeeInitialState.length > 0 ? (
-          employeeCards
-        ) : (
-          <UsersNotFound>Users not found</UsersNotFound>
-        )} */}
-      </CardsPosition>
-
       <WeatherBar>
         <MainBarBlock>
           <WeatherContainer>
@@ -82,25 +72,24 @@ function Weather() {
               <IconImg src={WeatherIconRain} alt=" Weather Icon"></IconImg>
             </Icons>
           </WeatherContainer>
-          <ButtonContainer>
-            <StandardButton>
-              <Button name="Delete" isStandardButton />
-            </StandardButton>
-          </ButtonContainer>
         </MainBarBlock>
+        <ButtonContainer>
+          <StandardButton>
+            <Button name="Save" isStandardButton />
+          </StandardButton>
+          <StandardButton>
+            <Button name="Delete" isStandardButton />
+          </StandardButton>
+        </ButtonContainer>
       </WeatherBar>
 
-
-
-      {/* {employeeInitialState.length > 0 && (
-        <ButtonControl>
-          <Button
-            isDeleteVariant
-            name="RDelete all cards"
-            onClick={deleteAllEmployees}
-          />
-        </ButtonControl>
-      )} */}
+      <ButtonContainer>
+        <Button
+          name=" Delete all cards"
+          // onClick={}
+          isBlueButton
+        />
+      </ButtonContainer>
     </PageWrapper>
   )
 }
